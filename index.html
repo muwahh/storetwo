@@ -155,6 +155,20 @@
   @media (max-width: 480px) {
     .product-display { padding: 20px; gap: 20px; }
   }
+  
+  /* Category Label Bar */
+  .category-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px dashed var(--line);
+    padding-bottom: 4px;
+    margin-bottom: -12px;
+  }
+
   .product-image-wrapper {
     position: relative;
     width: 100%;
@@ -191,7 +205,6 @@
   .product-price-block { display: flex; flex-direction: column; gap: 16px; }
   .product-price { font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: var(--white); line-height: 1; }
   
-  /* Thematic Desert / Tan / Neon Green Checkout Button */
   .checkout-btn {
     display: inline-flex; align-items: center; justify-content: center;
     background: var(--ink); color: var(--text);
@@ -211,7 +224,6 @@
     margin-top: 2px;
   }
   
-  /* High Attention Free Shipping Badge Layout */
   .shipping-container {
     display: flex;
     align-items: center;
@@ -300,6 +312,7 @@
     <div class="shop-grid">
       <!-- LAPTOP 1: ACER PREDATOR -->
       <div class="product-display">
+        <div class="category-label">// LAPTOPS</div>
         <div>
           <div class="shipping-container" style="margin-bottom: 8px;">
             <div class="shipping-tag"><span class="live-pulse"></span>Free Shipping</div>
@@ -331,6 +344,7 @@
 
       <!-- LAPTOP 2: LENOVO LEGION 5 -->
       <div class="product-display">
+        <div class="category-label">// LAPTOPS</div>
         <div>
           <div class="shipping-container" style="margin-bottom: 8px;">
             <div class="shipping-tag"><span class="live-pulse"></span>Free Shipping</div>
@@ -348,13 +362,14 @@
         <div>
           <div class="product-image-wrapper" style="margin-bottom: 20px;">
             <span class="badge">USED</span>
+            <!-- Paste the image URL here inside src="" -->
             <img src="https://i.imgur.com/7YlRbhN.jpeg" alt="Lenovo Legion 5">
           </div>
           <h3>Lenovo Legion 5</h3>
           <div class="product-specs">
             <div class="product-spec-row"><span>Display</span><span>144Hz</span></div>
             <div class="product-spec-row"><span>Graphics</span><span>Nvidia GeForce RTX 3060 Mobile</span></div>
-            <div class="product-spec-row"><span>SSD</span><span>512GB</span></div>
+            <div class="product-spec-row"><span>SSD</span><span>1TB</span></div>
             <div class="product-spec-row"><span>RAM</span><span>16GB</span></div>
           </div>
         </div>
