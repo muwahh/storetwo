@@ -15,7 +15,7 @@
     --text:#1C1A17;       /* Deep tactical charcoal/black for crisp readability */
     --muted:#6B6455;      /* Desert Muted Slate/Earth */
     --green:#00E65B;      /* Piercing High-Visibility Neon Green */
-    --green-light:rgba(0, 230, 91, 0.12); /* Translucent Neon Green */
+    --green-light:rgba(0, 230, 91, 0.15); /* Translucent Neon Green */
     --line:#D2C4A7;       /* Clean rugged tan borders */
     --white:#1C1A17;      /* Swapped contrast black headers */
     --silver:#11100E;     /* Pure Dark tactical headers */
@@ -134,19 +134,26 @@
 
   /* ---------- LIVE PRODUCT DISPLAY ---------- */
   .shop-display-section { background: var(--ink); padding-bottom: 40px; }
+  .shop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  @media (max-width: 960px) {
+    .shop-grid { grid-template-columns: 1fr; }
+  }
   .product-display {
     background: var(--paper);
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 32px;
-    display: grid;
-    grid-template-columns: 1.12fr 1fr;
-    gap: 40px;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
     box-shadow: 0 16px 32px -16px rgba(28,26,23,0.08);
   }
-  @media (max-width: 768px) {
-    .product-display { grid-template-columns: 1fr; gap: 24px; padding: 20px; }
+  @media (max-width: 480px) {
+    .product-display { padding: 20px; gap: 20px; }
   }
   .product-image-wrapper {
     position: relative;
@@ -170,54 +177,69 @@
   .product-image-wrapper img {
     width: 100%;
     height: auto;
-    max-height: 380px;
+    max-height: 260px;
     object-fit: contain;
     display: block;
   }
-  .product-details h3 { font-size: 28px; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
-  .product-specs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .product-details h3 { font-size: 24px; color: var(--white); margin-bottom: 14px; line-height: 1.2; }
+  .product-specs { display: flex; flex-direction: column; gap: 8px; }
   .product-spec-row { display: flex; justify-content: space-between; font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
   .product-spec-row span:first-child { color: var(--muted); }
   .product-spec-row span:last-child { font-family: 'IBM Plex Mono', monospace; color: var(--text); font-weight: 600; }
   
   /* ---------- CHECKOUT MODULE ---------- */
-  .product-price-block { display: flex; flex-direction: column; gap: 14px; margin-bottom: 4px; }
-  .product-price { font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 700; color: var(--white); }
+  .product-price-block { display: flex; flex-direction: column; gap: 16px; }
+  .product-price { font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: var(--white); line-height: 1; }
+  
+  /* Thematic Desert / Tan / Neon Green Checkout Button */
   .checkout-btn {
     display: inline-flex; align-items: center; justify-content: center;
-    background: var(--text); color: var(--green);
+    background: var(--ink); color: var(--text);
     font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px;
-    padding: 14px 24px; border-radius: 6px; border: 2px solid var(--text);
+    padding: 16px 24px; border-radius: 6px; border: 2.5px solid var(--text);
     cursor: pointer; text-align: center; transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 0px var(--text);
     text-transform: uppercase; letter-spacing: 0.05em;
+    position: relative;
   }
-  .checkout-btn:hover { background: var(--green); color: var(--text); border-color: var(--green); transform: translateY(-1px); }
-  .checkout-btn:active { transform: translateY(0); }
+  .checkout-btn:hover { background: var(--green); color: var(--text); transform: translateY(2px); box-shadow: 0 2px 0px var(--text); }
+  .checkout-btn:active { transform: translateY(4px); box-shadow: none; }
+  
   .trust-indicators {
     font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted);
     display: flex; gap: 16px; align-items: center; justify-content: flex-start;
     margin-top: 2px;
   }
   
-  /* Polished Free Shipping Tag */
+  /* High Attention Free Shipping Badge Layout */
   .shipping-container {
-    margin-top: 18px;
     display: flex;
     align-items: center;
   }
   .shipping-tag { 
     font-family: 'Space Grotesk', sans-serif; 
-    font-size: 14px; 
+    font-size: 15px; 
     color: var(--text); 
     font-weight: 700; 
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    background: var(--green-light);
-    border: 1px solid var(--text);
-    padding: 6px 14px;
+    letter-spacing: 0.08em;
+    background: var(--green);
+    border: 2px solid var(--text);
+    padding: 8px 16px;
     border-radius: 4px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 4px 4px 0px rgba(28,26,23,0.15);
+  }
+  .live-pulse {
+    width: 8px; height: 8px; background: var(--text); border-radius: 50%;
+    animation: pulse-glow 1.8s infinite ease-in-out;
+  }
+  @keyframes pulse-glow {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.5; }
   }
 
   /* ---------- CATEGORIES INVENTORY GRID ---------- */
@@ -275,29 +297,66 @@
       <h2 class="section-title">SHOP</h2>
     </div>
 
-    <div class="product-display">
-      <div class="product-image-wrapper">
-        <span class="badge">USED</span>
-        <img src="https://i.imgur.com/JkdzRS7.jpeg" alt="Acer Predator Helios Neo 16s Ai">
-      </div>
-      <div class="product-details">
-        <h3>Acer Predator Helios Neo 16s Ai</h3>
-        <div class="product-specs">
-          <div class="product-spec-row"><span>Display</span><span>244Hz</span></div>
-          <div class="product-spec-row"><span>Graphics</span><span>Nvidia GeForce RTX 5060 Mobile</span></div>
-          <div class="product-spec-row"><span>SSD</span><span>1TB</span></div>
-          <div class="product-spec-row"><span>RAM</span><span>16GB</span></div>
-        </div>
-        <div class="product-price-block">
-          <div class="product-price">$1,150 USD</div>
-          <a href="https://buy.stripe.com/fZuaEZ77ZeuWa31f1C5Vu00" target="_blank" class="checkout-btn">Proceed to Secure Checkout</a>
-          <div class="trust-indicators">
-            <span>🔒 SSL Encrypted</span>
-            <span>💳 Card Protection via Stripe</span>
+    <div class="shop-grid">
+      <!-- LAPTOP 1: ACER PREDATOR -->
+      <div class="product-display">
+        <div>
+          <div class="shipping-container" style="margin-bottom: 8px;">
+            <div class="shipping-tag"><span class="live-pulse"></span>Free Shipping</div>
+          </div>
+          <div class="product-price-block">
+            <div class="product-price">$1,150 USD</div>
+            <a href="https://buy.stripe.com/fZuaEZ77ZeuWa31f1C5Vu00" target="_blank" class="checkout-btn">Proceed to Secure Checkout</a>
+            <div class="trust-indicators">
+              <span>🔒 SSL Encrypted</span>
+              <span>💳 Card Protection via Stripe</span>
+            </div>
           </div>
         </div>
-        <div class="shipping-container">
-          <div class="shipping-tag">✓ Free Shipping</div>
+
+        <div>
+          <div class="product-image-wrapper" style="margin-bottom: 20px;">
+            <span class="badge">USED</span>
+            <img src="https://i.imgur.com/JkdzRS7.jpeg" alt="Acer Predator Helios Neo 16s Ai">
+          </div>
+          <h3>Acer Predator Helios Neo 16s Ai</h3>
+          <div class="product-specs">
+            <div class="product-spec-row"><span>Display</span><span>244Hz</span></div>
+            <div class="product-spec-row"><span>Graphics</span><span>Nvidia GeForce RTX 5060 Mobile</span></div>
+            <div class="product-spec-row"><span>SSD</span><span>1TB</span></div>
+            <div class="product-spec-row"><span>RAM</span><span>16GB</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAPTOP 2: LENOVO LEGION 5 -->
+      <div class="product-display">
+        <div>
+          <div class="shipping-container" style="margin-bottom: 8px;">
+            <div class="shipping-tag"><span class="live-pulse"></span>Free Shipping</div>
+          </div>
+          <div class="product-price-block">
+            <div class="product-price">$780 USD</div>
+            <a href="#" target="_blank" class="checkout-btn">Proceed to Secure Checkout</a>
+            <div class="trust-indicators">
+              <span>🔒 SSL Encrypted</span>
+              <span>💳 Card Protection via Stripe</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="product-image-wrapper" style="margin-bottom: 20px;">
+            <span class="badge">USED</span>
+            <img src="https://i.imgur.com/7YlRbhN.jpeg" alt="Lenovo Legion 5">
+          </div>
+          <h3>Lenovo Legion 5</h3>
+          <div class="product-specs">
+            <div class="product-spec-row"><span>Display</span><span>144Hz</span></div>
+            <div class="product-spec-row"><span>Graphics</span><span>Nvidia GeForce RTX 3060 Mobile</span></div>
+            <div class="product-spec-row"><span>SSD</span><span>512GB</span></div>
+            <div class="product-spec-row"><span>RAM</span><span>16GB</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -315,7 +374,7 @@
       <div class="cat-card active">
         <div class="cat-icon">💻</div>
         <div class="cat-title">Laptops</div>
-        <div class="cat-status">// 1 Allocated Live</div>
+        <div class="cat-status">// Availability</div>
       </div>
       <div class="cat-card disabled">
         <div class="cat-icon">👓</div>
@@ -348,8 +407,8 @@
         <div class="logo" style="color:black; margin-bottom:14px;"><span class="logo-mark"></span>Reloop</div>
       </div>
       <div class="foot-col">
-        <div class="foot-col-title">Inventory Allocation</div>
-        <a href="#shop-display">Laptops (Live)</a>
+        <div class="foot-col-title">Inventory</div>
+        <a href="#shop-display">Laptops</a>
         <a href="#inventory">Blue Light Glasses</a>
         <a href="#inventory">Cooling Pads</a>
         <a href="#inventory">Gaming Chairs</a>
