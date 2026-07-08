@@ -4,8 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reloop — Premium Gaming Gear & Electronics</title>
+<meta name="description" content="Reloop sells quality used and refurbished gaming laptops and electronics — inspected, tested, and shipped free. Shop RTX-powered laptops from Acer, Lenovo, and more.">
+<meta name="theme-color" content="#F3EDE0">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Reloop — Premium Gaming Gear & Electronics">
+<meta property="og:description" content="Quality used gaming laptops and electronics, inspected and shipped free.">
+<meta property="og:image" content="https://i.imgur.com/JkdzRS7.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght=500;600;700&family=Inter:wght=400;500;600;700&family=IBM+Plex+Mono:wght=500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -17,8 +28,8 @@
     --green:#00E65B;      /* Piercing High-Visibility Neon Green */
     --green-light:rgba(0, 230, 91, 0.15); /* Translucent Neon Green */
     --line:#D2C4A7;       /* Clean rugged tan borders */
-    --white:#1C1A17;      /* Swapped contrast black headers */
-    --silver:#11100E;     /* Pure Dark tactical headers */
+    --heading:#1C1A17;    /* Headline / high-contrast text color */
+    --dark:#11100E;       /* Pure dark tactical accents */
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -31,8 +42,13 @@
   }
   h1,h2,h3,.display{
     font-family:'Space Grotesk',sans-serif;
-    color:var(--silver);
+    color:var(--heading);
     letter-spacing:-0.01em;
+  }
+  .visually-hidden{
+    position:absolute; width:1px; height:1px;
+    padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0;
   }
   .mono{font-family:'IBM Plex Mono',monospace;}
   a{color:inherit; text-decoration:none;}
@@ -57,7 +73,7 @@
   }
   .logo{
     display:flex; align-items:center; gap:10px;
-    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--white);
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--heading);
     letter-spacing: 0.05em;
     text-transform: uppercase;
   }
@@ -79,7 +95,7 @@
     transform:rotate(180deg);
   }
   .nav-links{display:flex; gap:32px; font-size:14px; font-family:'IBM Plex Mono',monospace; font-weight:500; color:var(--muted);}
-  .nav-links a:hover{color:var(--green); text-shadow: 0 0 6px rgba(0,230,91,0.2);}
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--green); text-shadow: 0 0 6px rgba(0,230,91,0.2);}
   .nav-mobile-hide{display:flex;}
   .nav-toggle{
     display:none;
@@ -90,7 +106,7 @@
   }
   .nav-toggle-bars{position:relative; width:16px; height:12px;}
   .nav-toggle-bars span{
-    position:absolute; left:0; width:100%; height:2px; background:var(--silver); border-radius:2px;
+    position:absolute; left:0; width:100%; height:2px; background:var(--dark); border-radius:2px;
     transition:transform .2s ease, opacity .2s ease;
   }
   .nav-toggle-bars span:nth-child(1){top:0;}
@@ -130,7 +146,7 @@
   /* ---------- SECTION HEADS ---------- */
   section{padding:60px 0; border-bottom: 1px solid var(--line);}
   .section-head{max-width:600px; margin-bottom:24px;}
-  h2.section-title{font-size:clamp(32px,4vw,48px); font-weight:700; color:var(--white); text-transform: uppercase;}
+  h2.section-title{font-size:clamp(32px,4vw,48px); font-weight:700; color:var(--heading); text-transform: uppercase;}
 
   /* ---------- LIVE PRODUCT DISPLAY ---------- */
   .shop-display-section { background: var(--ink); padding-bottom: 40px; }
@@ -155,7 +171,7 @@
   @media (max-width: 480px) {
     .product-display { padding: 20px; gap: 20px; }
   }
-  
+
   /* Category Label Bar */
   .category-label {
     font-family: 'IBM Plex Mono', monospace;
@@ -172,6 +188,7 @@
   .product-image-wrapper {
     position: relative;
     width: 100%;
+    aspect-ratio: 4 / 3;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--line);
@@ -183,28 +200,27 @@
   }
   .product-image-wrapper .badge {
     position: absolute; top: 16px; left: 16px;
-    background: var(--white); color: var(--ink);
+    background: var(--heading); color: var(--ink);
     font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 4px;
     text-transform: uppercase; letter-spacing: 0.05em;
     z-index: 10;
   }
   .product-image-wrapper img {
     width: 100%;
-    height: auto;
-    max-height: 260px;
+    height: 100%;
     object-fit: contain;
     display: block;
   }
-  .product-details h3 { font-size: 24px; color: var(--white); margin-bottom: 14px; line-height: 1.2; }
+  .product-details h3 { font-size: 24px; color: var(--heading); margin-bottom: 14px; line-height: 1.2; }
   .product-specs { display: flex; flex-direction: column; gap: 8px; }
   .product-spec-row { display: flex; justify-content: space-between; font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
   .product-spec-row span:first-child { color: var(--muted); }
   .product-spec-row span:last-child { font-family: 'IBM Plex Mono', monospace; color: var(--text); font-weight: 600; }
-  
+
   /* ---------- CHECKOUT MODULE ---------- */
   .product-price-block { display: flex; flex-direction: column; gap: 16px; }
-  .product-price { font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: var(--white); line-height: 1; }
-  
+  .product-price { font-family: 'Space Grotesk', sans-serif; font-size: 38px; font-weight: 700; color: var(--heading); line-height: 1; }
+
   .checkout-btn {
     display: inline-flex; align-items: center; justify-content: center;
     background: var(--ink); color: var(--text);
@@ -215,24 +231,27 @@
     text-transform: uppercase; letter-spacing: 0.05em;
     position: relative;
   }
-  .checkout-btn:hover { background: var(--green); color: var(--text); transform: translateY(2px); box-shadow: 0 2px 0px var(--text); }
+  .checkout-btn:hover, .checkout-btn:focus-visible { background: var(--green); color: var(--text); transform: translateY(2px); box-shadow: 0 2px 0px var(--text); }
   .checkout-btn:active { transform: translateY(4px); box-shadow: none; }
-  
+  .checkout-btn[aria-disabled="true"]{
+    opacity: 0.5; cursor: not-allowed; pointer-events: none;
+  }
+
   .trust-indicators {
     font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted);
     display: flex; gap: 16px; align-items: center; justify-content: flex-start;
-    margin-top: 2px;
+    margin-top: 2px; flex-wrap: wrap;
   }
-  
+
   .shipping-container {
     display: flex;
     align-items: center;
   }
-  .shipping-tag { 
-    font-family: 'Space Grotesk', sans-serif; 
-    font-size: 15px; 
-    color: var(--text); 
-    font-weight: 700; 
+  .shipping-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     background: var(--green);
@@ -269,70 +288,87 @@
   .cat-card.active { border-color: var(--text); background: var(--paper-alt); }
   .cat-card.disabled { opacity: 0.6; }
   .cat-icon{font-size:26px; margin-bottom:14px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));}
-  .cat-title{font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--white); margin-bottom:4px;}
+  .cat-title{font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--heading); margin-bottom:4px;}
   .cat-status { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; }
   .cat-card.active .cat-status { color: var(--text); }
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--paper); color:var(--muted); padding:64px 0 28px; border-top: 1px solid var(--line);}
-  .foot-grid{display:grid; grid-template-columns:2fr 1fr; gap:32px; margin-bottom:48px;}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:32px; margin-bottom:48px;}
   @media (max-width:760px){ .foot-grid{grid-template-columns:1fr;} }
-  .foot-col-title{color:var(--white); font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12px; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.06em;}
+  .foot-col-title{color:var(--heading); font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12px; margin-bottom:16px; text-transform:uppercase; letter-spacing:0.06em;}
   .foot-col a{display:block; font-size:14px; margin-bottom:10px; color:var(--muted);}
-  .foot-col a:hover{color:var(--text);}
+  .foot-col a:hover, .foot-col a:focus-visible{color:var(--text);}
   .foot-bottom{border-top:1px solid var(--line); padding-top:24px; display:flex; justify-content:space-between; font-size:12px; font-family:'IBM Plex Mono',monospace; flex-wrap:wrap; gap:10px;}
+  .skip-link{
+    position:absolute; left:-9999px; top:auto;
+    background:var(--green); color:var(--text); padding:12px 20px;
+    z-index:100; font-family:'IBM Plex Mono',monospace; font-weight:600; border-radius:4px;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header>
-  <nav>
-    <div class="logo"><span class="logo-mark"></span>Reloop</div>
+  <nav aria-label="Primary">
+    <a href="#" class="logo"><span class="logo-mark" aria-hidden="true"></span>Reloop</a>
     <div class="nav-links nav-mobile-hide">
       <a href="#shop-display">// Shop</a>
       <a href="#inventory">// Inventory</a>
     </div>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-      <span class="nav-toggle-bars"><span></span><span></span><span></span></span>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel">
+      <span class="nav-toggle-bars" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
   </nav>
-  <div class="mobile-panel">
+  <div class="mobile-panel" id="mobile-panel">
     <a href="#shop-display">// Shop</a>
     <a href="#inventory">// Inventory</a>
   </div>
 </header>
 
+<main id="main-content">
+
+<h1 class="visually-hidden">Reloop — Premium Gaming Gear & Electronics</h1>
+
 <!-- PERSISTENT TOP SHOP DISPLAY -->
-<section class="shop-display-section" id="shop-display">
+<section class="shop-display-section" id="shop-display" aria-labelledby="shop-heading">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="section-title">SHOP</h2>
+      <h2 class="section-title" id="shop-heading">Shop</h2>
     </div>
 
     <div class="shop-grid">
       <!-- LAPTOP 1: ACER PREDATOR -->
-      <div class="product-display">
-        <div class="category-label">// LAPTOPS</div>
+      <article class="product-display" itemscope itemtype="https://schema.org/Product">
+        <div class="category-label">// Laptops</div>
         <div>
           <div class="shipping-container" style="margin-bottom: 8px;">
-            <div class="shipping-tag"><span class="live-pulse"></span>Free Shipping</div>
+            <div class="shipping-tag"><span class="live-pulse" aria-hidden="true"></span>Free Shipping</div>
           </div>
-          <div class="product-price-block">
-            <div class="product-price">$1150 USD</div>
-            <a href="https://buy.stripe.com/fZuaEZ77ZeuWa31f1C5Vu00" target="_blank" class="checkout-btn">Proceed to Secure Checkout</a>
+          <div class="product-price-block" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <div class="product-price">
+              <span class="visually-hidden">Price:</span>
+              <span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="1150">1150</span> USD
+            </div>
+            <meta itemprop="availability" content="https://schema.org/InStock">
+            <meta itemprop="url" content="https://buy.stripe.com/4gMbJ3eAr72u2Az5r25Vu02">
+            <a href="https://buy.stripe.com/4gMbJ3eAr72u2Az5r25Vu02" target="_blank" rel="noopener" class="checkout-btn">Proceed to secure checkout</a>
             <div class="trust-indicators">
-              <span>🔒 SSL Encrypted</span>
-              <span>💳 Card Protection via Stripe</span>
+              <span>🔒 SSL encrypted</span>
+              <span>💳 Card protection via Stripe</span>
             </div>
           </div>
         </div>
 
-        <div>
+        <div class="product-details">
           <div class="product-image-wrapper" style="margin-bottom: 20px;">
-            <span class="badge">USED</span>
-            <img src="https://i.imgur.com/JkdzRS7.jpeg" alt="Acer Predator Helios Neo 16s Ai">
+            <span class="badge">Used</span>
+            <img src="https://i.imgur.com/JkdzRS7.jpeg" alt="Acer Predator Helios Neo 16s Ai gaming laptop, open and angled to show its display and keyboard" loading="lazy" itemprop="image">
           </div>
-          <h3>Acer Predator Helios Neo 16s Ai</h3>
+          <h3 itemprop="name">Acer Predator Helios Neo 16s Ai</h3>
           <div class="product-specs">
             <div class="product-spec-row"><span>Display</span><span>244Hz</span></div>
             <div class="product-spec-row"><span>Graphics</span><span>Nvidia GeForce RTX 5060 Mobile</span></div>
@@ -340,31 +376,36 @@
             <div class="product-spec-row"><span>RAM</span><span>16GB</span></div>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- LAPTOP 2: LENOVO LEGION 5 -->
-      <div class="product-display">
-        <div class="category-label">// LAPTOPS</div>
+      <article class="product-display" itemscope itemtype="https://schema.org/Product">
+        <div class="category-label">// Laptops</div>
         <div>
           <div class="shipping-container" style="margin-bottom: 8px;">
-            <div class="shipping-tag"><span class="live-pulse"></span>Free Shipping</div>
+            <div class="shipping-tag"><span class="live-pulse" aria-hidden="true"></span>Free Shipping</div>
           </div>
-          <div class="product-price-block">
-            <div class="product-price">$780 USD</div>
-            <a href="#" target="_blank" class="checkout-btn">Proceed to Secure Checkout</a>
+          <div class="product-price-block" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <div class="product-price">
+              <span class="visually-hidden">Price:</span>
+              <span itemprop="priceCurrency" content="USD">$</span><span itemprop="price" content="780">780</span> USD
+            </div>
+            <meta itemprop="availability" content="https://schema.org/InStock">
+            <meta itemprop="url" content="https://buy.stripe.com/aFa28tdwn5Yqcb96v65Vu01">
+            <a href="https://buy.stripe.com/aFa28tdwn5Yqcb96v65Vu01" target="_blank" rel="noopener" class="checkout-btn">Proceed to secure checkout</a>
             <div class="trust-indicators">
-              <span>🔒 SSL Encrypted</span>
-              <span>💳 Card Protection via Stripe</span>
+              <span>🔒 SSL encrypted</span>
+              <span>💳 Card protection via Stripe</span>
             </div>
           </div>
         </div>
 
-        <div>
+        <div class="product-details">
           <div class="product-image-wrapper" style="margin-bottom: 20px;">
-            <span class="badge">USED</span>
-            <img src="https://i.imgur.com/Se9akFD.jpeg" alt="Lenovo Legion 5">
+            <span class="badge">Used</span>
+            <img src="https://i.imgur.com/Se9akFD.jpeg" alt="Lenovo Legion 5 gaming laptop, open and angled to show its display and keyboard" loading="lazy" itemprop="image">
           </div>
-          <h3>Lenovo Legion 5</h3>
+          <h3 itemprop="name">Lenovo Legion 5</h3>
           <div class="product-specs">
             <div class="product-spec-row"><span>Display</span><span>144Hz</span></div>
             <div class="product-spec-row"><span>Graphics</span><span>Nvidia GeForce RTX 3060 Mobile</span></div>
@@ -372,41 +413,41 @@
             <div class="product-spec-row"><span>RAM</span><span>16GB</span></div>
           </div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- INVENTORY SECTION -->
-<section class="categories" id="inventory">
+<section class="categories" id="inventory" aria-labelledby="inventory-heading">
   <div class="wrap">
     <div class="section-head">
-      <h2 class="section-title">Inventory</h2>
+      <h2 class="section-title" id="inventory-heading">Inventory</h2>
     </div>
-    
+
     <div class="cat-grid">
       <div class="cat-card active">
-        <div class="cat-icon">💻</div>
+        <div class="cat-icon" aria-hidden="true">💻</div>
         <div class="cat-title">Laptops</div>
-        <div class="cat-status">// Availability</div>
+        <div class="cat-status">// In stock</div>
       </div>
       <div class="cat-card disabled">
-        <div class="cat-icon">👓</div>
+        <div class="cat-icon" aria-hidden="true">👓</div>
         <div class="cat-title">Blue Light Glasses</div>
         <div class="cat-status">// Pending restock</div>
       </div>
       <div class="cat-card disabled">
-        <div class="cat-icon">❄️</div>
+        <div class="cat-icon" aria-hidden="true">❄️</div>
         <div class="cat-title">Cooling Pads</div>
         <div class="cat-status">// Pending restock</div>
       </div>
       <div class="cat-card disabled">
-        <div class="cat-icon">💺</div>
+        <div class="cat-icon" aria-hidden="true">💺</div>
         <div class="cat-title">Gaming Chairs</div>
         <div class="cat-status">// Pending restock</div>
       </div>
       <div class="cat-card disabled">
-        <div class="cat-icon">🎮</div>
+        <div class="cat-icon" aria-hidden="true">🎮</div>
         <div class="cat-title">PS5 Stands</div>
         <div class="cat-status">// Pending restock</div>
       </div>
@@ -414,11 +455,14 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="logo" style="color:black; margin-bottom:14px;"><span class="logo-mark"></span>Reloop</div>
+        <div class="logo" style="color:var(--heading); margin-bottom:14px;"><span class="logo-mark" aria-hidden="true"></span>Reloop</div>
+        <p style="font-size:14px; max-width:32ch;">Quality used gaming laptops and electronics, inspected and shipped free.</p>
       </div>
       <div class="foot-col">
         <div class="foot-col-title">Inventory</div>
@@ -428,9 +472,16 @@
         <a href="#inventory">Gaming Chairs</a>
         <a href="#inventory">PS5 Stands</a>
       </div>
+      <div class="foot-col">
+        <div class="foot-col-title">Company</div>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+      </div>
     </div>
     <div class="foot-bottom">
-      <span>&copy; 2026 Reloop Electronics.</span>
+      <span>&copy; <span id="year">2026</span> Reloop Electronics.</span>
     </div>
   </div>
 </footer>
@@ -439,6 +490,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initScrollReveal();
+  document.getElementById('year').textContent = new Date().getFullYear();
 });
 
 function initMobileNav() {
