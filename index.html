@@ -128,14 +128,9 @@
   }
 
   /* ---------- SECTION HEADS ---------- */
-  section{padding:80px 0; border-bottom: 1px solid var(--line);}
-  .section-head{max-width:600px; margin-bottom:40px;}
-  .section-kicker{
-    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:600;
-    color:var(--text); background: var(--green); display: inline-block; padding: 2px 8px;
-    text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px; border-radius: 4px;
-  }
-  h2.section-title{font-size:clamp(26px,3.4vw,36px); font-weight:700; color:var(--white);}
+  section{padding:60px 0; border-bottom: 1px solid var(--line);}
+  .section-head{max-width:600px; margin-bottom:24px;}
+  h2.section-title{font-size:clamp(32px,4vw,48px); font-weight:700; color:var(--white); text-transform: uppercase;}
 
   /* ---------- LIVE PRODUCT DISPLAY ---------- */
   .shop-display-section { background: var(--ink); padding-bottom: 40px; }
@@ -179,12 +174,7 @@
     object-fit: contain;
     display: block;
   }
-  .product-details .condition-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px; font-weight: 600; color: var(--muted);
-    margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em;
-  }
-  .product-details h3 { font-size: 28px; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+  .product-details h3 { font-size: 28px; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
   .product-specs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
   .product-spec-row { display: flex; justify-content: space-between; font-size: 14px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
   .product-spec-row span:first-child { color: var(--muted); }
@@ -209,10 +199,29 @@
     display: flex; gap: 16px; align-items: center; justify-content: flex-start;
     margin-top: 2px;
   }
-  .shipping-tag { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--text); font-weight: 600; }
+  
+  /* Polished Free Shipping Tag */
+  .shipping-container {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+  }
+  .shipping-tag { 
+    font-family: 'Space Grotesk', sans-serif; 
+    font-size: 14px; 
+    color: var(--text); 
+    font-weight: 700; 
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--green-light);
+    border: 1px solid var(--text);
+    padding: 6px 14px;
+    border-radius: 4px;
+    display: inline-block;
+  }
 
   /* ---------- CATEGORIES INVENTORY GRID ---------- */
-  .categories{background:var(--ink); padding-top: 40px;}
+  .categories{background:var(--ink); padding-top: 20px;}
   .cat-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:16px;}
   @media (max-width:1024px){ .cat-grid{grid-template-columns:repeat(3,1fr);} }
   @media (max-width:720px){ .cat-grid{grid-template-columns:1fr 1fr;} }
@@ -246,7 +255,7 @@
   <nav>
     <div class="logo"><span class="logo-mark"></span>Reloop</div>
     <div class="nav-links nav-mobile-hide">
-      <a href="#shop-display">// Featured Shop</a>
+      <a href="#shop-display">// Shop</a>
       <a href="#inventory">// Inventory</a>
     </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -254,7 +263,7 @@
     </button>
   </nav>
   <div class="mobile-panel">
-    <a href="#shop-display">// Featured Shop</a>
+    <a href="#shop-display">// Shop</a>
     <a href="#inventory">// Inventory</a>
   </div>
 </header>
@@ -263,8 +272,7 @@
 <section class="shop-display-section" id="shop-display">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-kicker">Live Deployment</div>
-      <h2 class="section-title">Featured Station Engine.</h2>
+      <h2 class="section-title">SHOP</h2>
     </div>
 
     <div class="product-display">
@@ -273,7 +281,6 @@
         <img src="https://i.imgur.com/JkdzRS7.jpeg" alt="Acer Predator Helios Neo 16s Ai">
       </div>
       <div class="product-details">
-        <div class="condition-tag">// High Performance Hardware</div>
         <h3>Acer Predator Helios Neo 16s Ai</h3>
         <div class="product-specs">
           <div class="product-spec-row"><span>Display</span><span>244Hz</span></div>
@@ -289,18 +296,19 @@
             <span>💳 Card Protection via Stripe</span>
           </div>
         </div>
-        <div class="shipping-tag" style="margin-top: 14px;">✓ Free Global Air Shipping Included</div>
+        <div class="shipping-container">
+          <div class="shipping-tag">✓ Free Shipping</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INVENTORY FOOTPRINT SECTION -->
+<!-- INVENTORY SECTION -->
 <section class="categories" id="inventory">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-kicker">Hardware Matrix</div>
-      <h2 class="section-title">Current Allocation Footprint.</h2>
+      <h2 class="section-title">Inventory</h2>
     </div>
     
     <div class="cat-grid">
@@ -350,7 +358,6 @@
     </div>
     <div class="foot-bottom">
       <span>&copy; 2026 Reloop Electronics.</span>
-      <span>All tactical hardware deployed globally.</span>
     </div>
   </div>
 </footer>
